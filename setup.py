@@ -28,9 +28,11 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Ticketmaster Discovery API",
+    description="Ticketmaster Discovery API client",
     author_email="git@edward.sh",
-    url="https://github.com/arcward/ticketpy",
+    author="Edward Wells",
+    license='MIT',
+    url="https://github.com/arcward/picketer",
     keywords=["Swagger", "Ticketmaster Discovery API"],
     install_requires=REQUIRES,
     packages=find_packages(),
