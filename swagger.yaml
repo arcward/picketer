@@ -1,0 +1,1307 @@
+swagger: '2.0'
+info:
+  description: Swagger spec based on Ticketmaster Discovery API
+  version: 1.0.0
+  title: Ticketmaster Discovery API
+  termsOfService: 'http://developer.ticketmaster.com/support/terms-of-use/'
+  contact:
+    email: git@edward.sh
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: app.ticketmaster.com
+basePath: /discovery/v2
+consumes:
+  - application/json
+produces:
+  - application/json
+tags:
+  - name: events
+    description: Event search
+    externalDocs:
+      description: Official Ticketmaster Discovery v2 API docs
+      url: >-
+        http://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
+  - name: venues
+    description: Venue searches
+schemes:
+  - https
+securityDefinitions:
+  APIKeyQueryParam:
+    type: apiKey
+    in: query
+    name: apikey
+security:
+  - APIKeyQueryParam: []
+paths:
+  '/events/{id}':
+    parameters:
+      - $ref: '#/parameters/event_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - events
+      summary: Get event details by ID
+      operationId: event_details
+      responses:
+        '200':
+          description: Event details
+          schema:
+            $ref: '#/definitions/Event'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/events/{id}/images':
+    parameters:
+      - $ref: '#/parameters/event_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - events
+      summary: Get event images
+      operationId: event_images
+      responses:
+        '200':
+          description: Event details
+          schema:
+            $ref: '#/definitions/EventImages'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  /events:
+    get:
+      tags:
+        - events
+      summary: Event search
+      description: Event search
+      operationId: search_events
+      parameters:
+        - name: id
+          in: query
+          required: false
+          type: string
+          description: Event ID
+        - name: keyword
+          in: query
+          required: false
+          type: string
+          description: Search by keyword
+        - name: attractionId
+          in: query
+          required: false
+          type: string
+        - name: venueId
+          in: query
+          required: false
+          type: string
+        - name: postalCode
+          in: query
+          required: false
+          type: string
+        - name: latlong
+          in: query
+          required: false
+          type: string
+        - name: radius
+          in: query
+          required: false
+          type: string
+        - name: unit
+          in: query
+          required: false
+          type: string
+          enum:
+            - miles
+            - km
+        - name: source
+          in: query
+          required: false
+          type: string
+          enum:
+            - ticketmaster
+            - universe
+            - frontgate
+            - tmr
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: marketId
+          in: query
+          required: false
+          type: string
+        - name: startDateTime
+          in: query
+          required: false
+          type: string
+        - name: endDateTime
+          in: query
+          required: false
+          type: string
+        - name: includeTBA
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+            - only
+        - name: includeTBD
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+            - only
+        - name: includeTest
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+            - only
+        - name: size
+          in: query
+          required: false
+          type: string
+        - name: page
+          in: query
+          required: false
+          type: string
+        - name: sort
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'name,asc'
+            - 'name,desc'
+            - 'date,asc'
+            - 'date,desc'
+            - 'relevance,asc'
+            - 'relevance,desc'
+            - 'distance,asc'
+            - 'name,date,asc'
+            - 'name,date,desc'
+            - 'date,name,asc'
+            - 'date,name,desc'
+            - 'onsaleStartDate,asc'
+        - name: onsaleStartDateTime
+          in: query
+          required: false
+          type: string
+        - name: onsaleEndDateTime
+          in: query
+          required: false
+          type: string
+        - name: city
+          in: query
+          required: false
+          type: string
+        - name: countryCode
+          in: query
+          required: false
+          type: string
+        - name: stateCode
+          in: query
+          required: false
+          type: string
+        - name: classificationName
+          in: query
+          required: false
+          type: string
+        - name: classificationId
+          in: query
+          required: false
+          type: string
+        - name: dmaId
+          in: query
+          required: false
+          type: string
+        - name: onsaleOnStartDate
+          in: query
+          required: false
+          type: string
+        - name: onsaleOnAfterStartDate
+          in: query
+          required: false
+          type: string
+        - name: segmentId
+          in: query
+          required: false
+          type: string
+        - name: segmentName
+          in: query
+          required: false
+          type: string
+        - name: promoterId
+          in: query
+          required: false
+          type: string
+        - name: clientVisibility
+          in: query
+          required: false
+          type: string
+        - name: nlp
+          in: query
+          required: false
+          type: string
+          enum:
+            - location
+        - name: includeLicensedContent
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+      responses:
+        '200':
+          description: List of event results
+          schema:
+            $ref: '#/definitions/container'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/venues/{id}':
+    parameters:
+      - $ref: '#/parameters/venue_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - venues
+      summary: Get venue details by ID
+      operationId: venue_details
+      responses:
+        '200':
+          description: Venue details
+          schema:
+            $ref: '#/definitions/Venue'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  /venues:
+    get:
+      tags:
+        - venues
+      summary: Venue search
+      description: Venue search
+      operationId: search_venues
+      parameters:
+        - name: id
+          in: query
+          required: false
+          type: string
+          description: Venue ID
+        - name: keyword
+          in: query
+          required: false
+          type: string
+          description: Search by keyword
+        - name: latlong
+          in: query
+          required: false
+          type: string
+        - name: radius
+          in: query
+          required: false
+          type: string
+        - name: unit
+          in: query
+          required: false
+          type: string
+          enum:
+            - miles
+            - km
+        - name: source
+          in: query
+          required: false
+          type: string
+          enum:
+            - ticketmaster
+            - universe
+            - frontgate
+            - tmr
+        - name: locale
+          in: query
+          required: false
+          type: string
+        - name: includeTest
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+            - only
+        - name: size
+          in: query
+          required: false
+          type: string
+        - name: page
+          in: query
+          required: false
+          type: string
+        - name: sort
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'name,asc'
+            - 'name,desc'
+            - 'date,asc'
+            - 'date,desc'
+            - 'relevance,asc'
+            - 'relevance,desc'
+            - 'distance,asc'
+            - 'name,date,asc'
+            - 'name,date,desc'
+            - 'date,name,asc'
+            - 'date,name,desc'
+            - 'onsaleStartDate,asc'
+        - name: countryCode
+          in: query
+          required: false
+          type: string
+        - name: stateCode
+          in: query
+          required: false
+          type: string
+        - name: includeLicensedContent
+          in: query
+          required: false
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+      responses:
+        '200':
+          description: List of event results
+          schema:
+            $ref: '#/definitions/container'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  /attractions:
+    parameters:
+      - $ref: '#/parameters/id'
+      - $ref: '#/parameters/keyword'
+      - $ref: '#/parameters/source'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_test'
+      - $ref: '#/parameters/size'
+      - $ref: '#/parameters/page'
+      - $ref: '#/parameters/include_licensed_content'
+      - name: sort
+        type: string
+        required: false
+        in: query
+        enum:
+          - 'name,asc'
+          - 'name,desc'
+          - 'relevance,asc'
+          - 'relevance,desc'
+      - name: classificationName
+        in: query
+        required: false
+        type: string
+      - name: classificationId
+        in: query
+        required: false
+        type: string
+    get:
+      tags:
+        - attractions
+      summary: Search attractions
+      operationId: search_attractions
+      responses:
+        '200':
+          description: List of event results
+          schema:
+            $ref: '#/definitions/container'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/attractions/{id}':
+    parameters:
+      - $ref: '#/parameters/attraction_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - attractions
+      summary: Get attraction details by ID
+      operationId: attraction_details
+      responses:
+        '200':
+          description: Event details
+          schema:
+            $ref: '#/definitions/Attraction'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/classifications/genres/{id}':
+    parameters:
+      - $ref: '#/parameters/genre_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - classifications
+      summary: Get genre details by ID
+      operationId: genre_details
+      responses:
+        '200':
+          description: Genre details
+          schema:
+            $ref: '#/definitions/GenreDetails'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/classifications/subgenres/{id}':
+    parameters:
+      - $ref: '#/parameters/subgenre_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - classifications
+      summary: Get subgenre details by ID
+      operationId: subgenre_details
+      responses:
+        '200':
+          description: Sub-genre details
+          schema:
+            $ref: '#/definitions/SubGenreDetails'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/classifications/segments/{id}':
+    parameters:
+      - $ref: '#/parameters/subgenre_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - classifications
+      summary: Get segment details by ID
+      operationId: segment_details
+      responses:
+        '200':
+          description: Segment details
+          schema:
+            $ref: '#/definitions/SegmentDetails'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  /classifications:
+    parameters:
+      - $ref: '#/parameters/id'
+      - $ref: '#/parameters/keyword'
+      - $ref: '#/parameters/source'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_test'
+      - $ref: '#/parameters/size'
+      - $ref: '#/parameters/page'
+      - $ref: '#/parameters/include_licensed_content'
+      - name: sort
+        in: query
+        type: string
+        required: false
+    get:
+      tags:
+        - classifications
+      summary: Search classifications
+      operationId: search_classifications
+      responses:
+        '200':
+          description: List of classification results
+          schema:
+            $ref: '#/definitions/container'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+  '/classifications/{id}':
+    parameters:
+      - $ref: '#/parameters/classification_id'
+      - $ref: '#/parameters/locale'
+      - $ref: '#/parameters/include_licensed_content'
+    get:
+      tags:
+        - classifications
+      summary: Get classification details by ID
+      operationId: classification_details
+      responses:
+        '200':
+          description: Classification details
+          schema:
+            $ref: '#/definitions/Classification'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+parameters:
+  event_id:
+    name: id
+    in: path
+    description: Event ID
+    required: true
+    type: string
+  venue_id:
+    name: id
+    in: path
+    description: Venue ID
+    required: true
+    type: string
+  attraction_id:
+    name: id
+    in: path
+    description: Attraction ID
+    required: true
+    type: string
+  classification_id:
+    name: id
+    in: path
+    description: Classification ID
+    required: true
+    type: string
+  genre_id:
+    name: id
+    in: path
+    description: Genre ID
+    required: true
+    type: string
+  subgenre_id:
+    name: id
+    in: path
+    description: Sub-genre ID
+    required: true
+    type: string
+  segment_id:
+    name: id
+    in: path
+    description: Segment ID
+    required: true
+    type: string
+  source:
+    name: source
+    in: query
+    required: false
+    type: string
+    enum:
+      - ticketmaster
+      - universe
+      - frontgate
+      - tmr
+  include_licensed_content:
+    name: includeLicensedContent
+    in: query
+    required: false
+    type: string
+    enum:
+      - 'yes'
+      - 'no'
+  country_code:
+    name: countryCode
+    in: query
+    required: false
+    type: string
+  state_code:
+    name: stateCode
+    in: query
+    required: false
+    type: string
+  locale:
+    name: locale
+    in: query
+    required: false
+    type: string
+  size:
+    name: size
+    in: query
+    required: false
+    type: string
+  page:
+    name: page
+    in: query
+    required: false
+    type: string
+  id:
+    name: id
+    in: query
+    required: false
+    type: string
+  keyword:
+    name: keyword
+    in: query
+    required: false
+    type: string
+  include_test:
+    name: includeTest
+    in: query
+    required: false
+    type: string
+definitions:
+  container:
+    type: object
+    properties:
+      _links:
+        $ref: '#/definitions/Links'
+      _embedded:
+        $ref: '#/definitions/Embedded'
+      page:
+        $ref: '#/definitions/Page'
+  Links:
+    type: object
+    properties:
+      self:
+        $ref: '#/definitions/Link'
+      next:
+        $ref: '#/definitions/Link'
+      prev:
+        $ref: '#/definitions/Link'
+  Link:
+    type: object
+    properties:
+      href:
+        type: string
+  Embedded:
+    type: object
+    properties:
+      venues:
+        type: array
+        items:
+          $ref: '#/definitions/Venue'
+      events:
+        type: array
+        items:
+          $ref: '#/definitions/Event'
+      attractions:
+        type: array
+        items:
+          $ref: '#/definitions/Attraction'
+      classifications:
+        type: array
+        items:
+          $ref: '#/definitions/Classification'
+  Page:
+    properties:
+      size:
+        type: integer
+      totalElements:
+        type: integer
+      totalPages:
+        type: integer
+      number:
+        type: integer
+  Venue:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+      distance:
+        type: number
+      units:
+        type: string
+      locale:
+        type: string
+      description:
+        type: string
+      address:
+        $ref: '#/definitions/Address'
+      city:
+        $ref: '#/definitions/City'
+      additionalInfo:
+        type: string
+      state:
+        $ref: '#/definitions/State'
+      country:
+        $ref: '#/definitions/Country'
+      url:
+        type: string
+      postalCode:
+        type: string
+      location:
+        $ref: '#/definitions/Location'
+      timezone:
+        type: string
+      currency:
+        type: string
+      markets:
+        type: array
+        items:
+          $ref: '#/definitions/Market'
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/Image'
+      dma:
+        type: array
+        items:
+          $ref: '#/definitions/DMA'
+      social:
+        $ref: '#/definitions/Social'
+      boxOfficeInfo:
+        $ref: '#/definitions/BoxOfficeInfo'
+      parkingDetail:
+        type: string
+      accessibleSeatingDetail:
+        type: string
+      generalInfo:
+        $ref: '#/definitions/GeneralInfo'
+      externalLinks:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+      test:
+        type: boolean
+      _links:
+        $ref: '#/definitions/Links'
+  EventImages:
+    type: object
+    properties:
+      _links:
+        $ref: '#/definitions/Links'
+      type:
+        type: string
+      id:
+        type: string
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/Image'
+  GenreDetails:
+    type: object
+    properties:
+      _links:
+        $ref: '#/definitions/Links'
+      _embedded:
+        $ref: '#/definitions/Embedded'
+      id:
+        type: string
+      name:
+        type: string
+  SubGenreDetails:
+    type: object
+    properties:
+      _links:
+        $ref: '#/definitions/Links'
+      _embedded:
+        $ref: '#/definitions/Embedded'
+      id:
+        type: string
+      name:
+        type: string
+  SegmentDetails:
+    type: object
+    properties:
+      _links:
+        $ref: '#/definitions/Links'
+      _embedded:
+        $ref: '#/definitions/Embedded'
+      id:
+        type: string
+      name:
+        type: string
+  Event:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+      distance:
+        type: number
+      units:
+        type: string
+      location:
+        $ref: '#/definitions/Location'
+      locale:
+        type: string
+      description:
+        type: string
+      url:
+        type: string
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/Image'
+      dates:
+        $ref: '#/definitions/Dates'
+      sales:
+        $ref: '#/definitions/Sales'
+      info:
+        type: string
+      pleaseNote:
+        type: string
+      priceRanges:
+        type: array
+        items:
+          $ref: '#/definitions/Price'
+      promoter:
+        $ref: '#/definitions/Promoter'
+      seatmap:
+        $ref: '#/definitions/SeatMap'
+      classifications:
+        type: array
+        items:
+          $ref: '#/definitions/Classification'
+      place:
+        $ref: '#/definitions/Place'
+      externalLinks:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+      test:
+        type: boolean
+      additionalInfo:
+        type: string
+      _links:
+        $ref: '#/definitions/Links'
+      _embedded:
+        $ref: '#/definitions/Embedded'
+  Attraction:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+      url:
+        type: string
+      locale:
+        type: string
+      images:
+        type: array
+        items:
+          $ref: '#/definitions/Image'
+      classifications:
+        type: array
+        items:
+          $ref: '#/definitions/Classification'
+      description:
+        type: string
+      additionalInfo:
+        type: string
+      externalLinks:
+        type: array
+        items:
+          $ref: '#/definitions/Link'
+      test:
+        type: boolean
+      _links:
+        $ref: '#/definitions/Links'
+  Image:
+    type: object
+    properties:
+      url:
+        type: string
+      ratio:
+        type: string
+      width:
+        type: string
+      height:
+        type: string
+      fallback:
+        type: boolean
+      attribution:
+        type: string
+  Address:
+    type: object
+    properties:
+      line_1:
+        type: string
+      line_2:
+        type: string
+      line_3:
+        type: string
+  City:
+    type: object
+    properties:
+      name:
+        type: string
+  State:
+    type: object
+    properties:
+      name:
+        type: string
+      stateCode:
+        type: string
+  Location:
+    type: object
+    properties:
+      latitude:
+        type: string
+      longitude:
+        type: string
+  Area:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+      rank:
+        type: string
+      area-type:
+        type: string
+  Country:
+    type: object
+    properties:
+      name:
+        type: string
+      countryCode:
+        type: string
+  Segment:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+  Genre:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+  SubGenre:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+  Price:
+    type: object
+    properties:
+      type:
+        type: string
+      value:
+        type: string
+      currency:
+        type: string
+  Market:
+    type: object
+    properties:
+      id:
+        type: string
+  GeneralInfo:
+    type: object
+    properties:
+      generalRule:
+        type: string
+      childRule:
+        type: string
+  BoxOfficeInfo:
+    type: object
+    properties:
+      phoneNumberDetail:
+        type: string
+      openHoursDetail:
+        type: string
+      acceptedPaymentDetail:
+        type: string
+      willCallDetail:
+        type: string
+  DMA:
+    type: object
+    properties:
+      id:
+        type: string
+  Dates:
+    type: object
+    properties:
+      start:
+        $ref: '#/definitions/Time'
+      end:
+        $ref: '#/definitions/EndTime'
+      access:
+        $ref: '#/definitions/Access'
+      status:
+        $ref: '#/definitions/Status'
+      timezone:
+        type: string
+      spanMultipleDays:
+        type: boolean
+  Status:
+    type: object
+    properties:
+      code:
+        type: string
+  Time:
+    type: object
+    properties:
+      chronology:
+        $ref: '#/definitions/Chronology'
+      millisOfSecond:
+        type: integer
+      millisOfDay:
+        type: integer
+      secondOfMinute:
+        type: integer
+      minuteOfHour:
+        type: integer
+      hourOfDay:
+        type: integer
+      noSpecificTime:
+        type: boolean
+      localDate:
+        type: string
+      localTime:
+        $ref: '#/definitions/Time'
+      timeTBA:
+        type: boolean
+      values:
+        type: array
+        items:
+          $ref: '#/definitions/TimeValue'
+      fieldTypes:
+        type: array
+        items:
+          $ref: '#/definitions/FieldType'
+      fields:
+        type: array
+        items:
+          $ref: '#/definitions/Field'
+  Field:
+    type: object
+    properties:
+      lenient:
+        type: boolean
+      durationField:
+        $ref: '#/definitions/Field'
+      rangeDurationField:
+        $ref: '#/definitions/Duration'
+  EndTime:
+    type: object
+    properties:
+      localDate:
+        type: string
+      dateTime:
+        type: string
+      approximate:
+        type: boolean
+      noSpecificTime:
+        type: boolean
+      localTime:
+        $ref: '#/definitions/Time'
+  Access:
+    type: object
+    properties:
+      startDateTime:
+        type: string
+      startApproximate:
+        type: boolean
+      endDateTime:
+        type: string
+      endApproximate:
+        type: boolean
+  TimeValue:
+    type: object
+    properties:
+      type:
+        type: integer
+      format:
+        type: integer
+  FieldType:
+    type: object
+    properties:
+      durationType:
+        $ref: '#/definitions/Duration'
+      rangeDurationType:
+        $ref: '#/definitions/Duration'
+      name:
+        type: string
+      minimumValue:
+        type: integer
+      maximumValue:
+        type: integer
+      type:
+        $ref: '#/definitions/Type'
+      supported:
+        type: boolean
+      leapDurationField:
+        $ref: '#/definitions/Duration'
+  Duration:
+    type: object
+    properties:
+      name:
+        type: string
+      unitMillis:
+        type: integer
+      precise:
+        type: boolean
+      type:
+        $ref: '#/definitions/Type'
+      supported:
+        type: boolean
+  Type:
+    type: object
+    properties:
+      name:
+        type: string
+  Chronology:
+    type: object
+    properties:
+      zone:
+        $ref: '#/definitions/Zone'
+  Zone:
+    type: object
+    properties:
+      fixed:
+        type: boolean
+      id:
+        type: string
+  Sales:
+    type: object
+    properties:
+      public:
+        $ref: '#/definitions/PublicDate'
+      presales:
+        type: array
+        items:
+          $ref: '#/definitions/PresaleDate'
+  PublicDate:
+    type: object
+    properties:
+      startDateTime:
+        type: string
+      endDateTime:
+        type: string
+      startTBD:
+        type: boolean
+  PresaleDate:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      url:
+        type: string
+      startDateTime:
+        type: string
+      endDateTime:
+        type: string
+  Promoter:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+  SeatMap:
+    type: object
+    properties:
+      staticUrl:
+        type: string
+  Classification:
+    type: object
+    properties:
+      primary:
+        type: boolean
+      segment:
+        $ref: '#/definitions/Segment'
+      genre:
+        $ref: '#/definitions/Genre'
+      subGenre:
+        $ref: '#/definitions/SubGenre'
+      type:
+        $ref: '#/definitions/ClassificationType'
+      subType:
+        $ref: '#/definitions/ClassificationType'
+      _links:
+        $ref: '#/definitions/Links'
+  ClassificationType:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+  Place:
+    type: object
+    properties:
+      area:
+        $ref: '#/definitions/Area'
+      address:
+        $ref: '#/definitions/Address'
+      city:
+        $ref: '#/definitions/City'
+      state:
+        $ref: '#/definitions/State'
+      country:
+        $ref: '#/definitions/Country'
+      location:
+        $ref: '#/definitions/Location'
+      postalCode:
+        type: string
+      name:
+        type: string
+  Social:
+    type: object
+    properties:
+      twitter:
+        $ref: '#/definitions/Twitter'
+  Twitter:
+    type: object
+    properties:
+      handle:
+        type: string
+      hashtags:
+        type: array
+        items:
+          type: string
