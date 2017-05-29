@@ -50,11 +50,25 @@ paths:
           schema:
             $ref: '#/definitions/Event'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/events/{id}/images':
     parameters:
       - $ref: '#/parameters/event_id'
@@ -71,11 +85,25 @@ paths:
           schema:
             $ref: '#/definitions/EventImages'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   /events:
     get:
       tags:
@@ -270,11 +298,25 @@ paths:
           schema:
             $ref: '#/definitions/container'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/venues/{id}':
     parameters:
       - $ref: '#/parameters/venue_id'
@@ -291,11 +333,25 @@ paths:
           schema:
             $ref: '#/definitions/Venue'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   /venues:
     get:
       tags:
@@ -396,11 +452,25 @@ paths:
           schema:
             $ref: '#/definitions/container'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   /attractions:
     parameters:
       - $ref: '#/parameters/id'
@@ -439,11 +509,25 @@ paths:
           schema:
             $ref: '#/definitions/container'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/attractions/{id}':
     parameters:
       - $ref: '#/parameters/attraction_id'
@@ -460,11 +544,25 @@ paths:
           schema:
             $ref: '#/definitions/Attraction'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/classifications/genres/{id}':
     parameters:
       - $ref: '#/parameters/genre_id'
@@ -481,11 +579,25 @@ paths:
           schema:
             $ref: '#/definitions/GenreDetails'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/classifications/subgenres/{id}':
     parameters:
       - $ref: '#/parameters/subgenre_id'
@@ -502,11 +614,25 @@ paths:
           schema:
             $ref: '#/definitions/SubGenreDetails'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/classifications/segments/{id}':
     parameters:
       - $ref: '#/parameters/subgenre_id'
@@ -523,11 +649,25 @@ paths:
           schema:
             $ref: '#/definitions/SegmentDetails'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   /classifications:
     parameters:
       - $ref: '#/parameters/id'
@@ -553,11 +693,25 @@ paths:
           schema:
             $ref: '#/definitions/container'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
   '/classifications/{id}':
     parameters:
       - $ref: '#/parameters/classification_id'
@@ -574,11 +728,25 @@ paths:
           schema:
             $ref: '#/definitions/Classification'
         '400':
-          description: Invalid ID supplied
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '401':
+          description: Invalid API key
+          schema:
+            $ref: '#/definitions/APIFaultResponse'
         '404':
-          description: Pet not found
-        '405':
-          description: Validation exception
+          description: Not found
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        '429':
+          description: Request quota exceeded
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/APIErrorResponse'
 parameters:
   event_id:
     name: id
@@ -1305,3 +1473,42 @@ definitions:
         type: array
         items:
           type: string
+responses:
+  APIFaultResponse:
+    type: object
+    properties:
+      fault:
+        $ref: '#/responses/APIFault'
+  APIFault:
+    type: object
+    properties:
+      faultstring:
+        type: string
+      detail:
+        type: string
+  APIFaultDetail:
+    type: object
+    properties:
+      errorcode:
+        type: string
+  APIErrorResponse:
+    type: object
+    properties:
+      errors:
+        $ref: '#/responses/APIError'
+  APIError:
+    type: object
+    properties:
+      code:
+        type: string
+      detail:
+        type: string
+      status:
+        type: string
+      _links:
+        $ref: '#/responses/ErrorLinks'
+  ErrorLinks:
+    type: object
+    properties:
+      about:
+        $ref: '#/definitions/Link'

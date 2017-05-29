@@ -77,13 +77,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -114,13 +135,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -401,13 +443,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -438,13 +501,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -586,13 +670,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -662,13 +767,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -699,13 +825,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -736,13 +883,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -773,13 +941,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -810,13 +999,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -868,13 +1078,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -905,13 +1136,34 @@
             }
           },
           "400": {
-            "description": "Invalid ID supplied"
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Invalid API key",
+            "schema": {
+              "$ref": "#/definitions/APIFaultResponse"
+            }
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           },
-          "405": {
-            "description": "Validation exception"
+          "429": {
+            "description": "Request quota exceeded",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/APIErrorResponse"
+            }
           }
         }
       }
@@ -1997,6 +2249,68 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    }
+  },
+  "responses": {
+    "APIFaultResponse": {
+      "type": "object",
+      "properties": {
+        "fault": {
+          "$ref": "#/responses/APIFault"
+        }
+      }
+    },
+    "APIFault": {
+      "type": "object",
+      "properties": {
+        "faultstring": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        }
+      }
+    },
+    "APIFaultDetail": {
+      "type": "object",
+      "properties": {
+        "errorcode": {
+          "type": "string"
+        }
+      }
+    },
+    "APIErrorResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "$ref": "#/responses/APIError"
+        }
+      }
+    },
+    "APIError": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "_links": {
+          "$ref": "#/responses/ErrorLinks"
+        }
+      }
+    },
+    "ErrorLinks": {
+      "type": "object",
+      "properties": {
+        "about": {
+          "$ref": "#/definitions/Link"
         }
       }
     }
